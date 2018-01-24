@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Basic Bar Chart</title>
+    <meta name="description" content="">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+    <body>
+        <div id="chart" style="width:600px;height:300px;"></div>
+        <div id="chart2" style="width:600px;height:300px;"></div>
+
+
+
+        <!--[if 1t IE 9]><script src="Flotr2-master/lib/excanvas.min.js"></script><![endif]-->
+        <!--this is for if someone is using an older browser like Internet Explorer-->
+        <script src="Flotr2-master/flotr2.min.js"></script>
+        <!--connecting to the Floter self hosted files js-->
+        <script>
+            var wins = [[[0,13],[1,11],[2,13],[3,15],[4,18],[5,21],[6,28]]];
+// This is used for the y axis, the label is the first number in the set, it coordinates with the label in the 'years' set below.
+            var years = [[0, "2006"], [1, "2007"], [2, "2008"], [3, "2009"], [4, "2010"], [5, "2011"], [6, "2012"]];
+//  This is used for the x axis
+            var wins2 = [[[0,28],[1,28],[2,21],[3,20],[4,19]]];
+            var teams = [[0, "MCI"],[1,'MUN'],[2,'ARS'],[3,'TOT'],[4,'NEW']];
+
+            window.onload = function() {
+                Flotr.draw(document.getElementById('chart'), wins, {
+                    title: "Manchester City Wins",
+                    colors: ["#DF021D"],
+                    bars: {
+                        show: true,
+                        barWidth: 0.5,
+                        shadowSize: 0,
+                        fillOpacity: 1,
+                        lineWidth: 0
+                    },
+                    yaxis: {
+                        min: 0,
+                        tickDecimals: 0
+//                      has the y axis start at 0 instead of just using the lowest starting number in the values.
+                    },
+                    xaxis: {
+                        ticks: years
+//                        This tells Flotr2 which labels to match which x-values.
+                    },
+                    grid: {
+                        horizontalLines: false,
+                        verticalLines: false
+//                        gets rid of the grid lines, turn this to true and the gridlines will make a comeback.
+                    }
+                });
+
+                Flotr.draw(document.getElementById('chart2'), wins2, {
+                    title: "Premier League Wins (2011-2012)",
+                    colors: ["#89AFD2","#1D1D1D","#DF021D","#0E204B","#E67840"],
+//more than one color is not working....what am I doing wrong???
+                    bars: {
+                        show: true,
+
+                        barWidth: 0.5,
+                        shadowSize: 0,
+                        fillOpacity: 1,
+                        lineWidth: 0
+                    },
+                    yaxis: {
+                        min:0,
+                        tickDecimals: 0
+                    },
+                    xaxis: {
+                        ticks: teams
+                    },
+                    grid: {
+                        horizontalLines: false,
+                        verticalLines: false
+                    }
+                });
+            };
+        </script>
+    </body>
+</html>
