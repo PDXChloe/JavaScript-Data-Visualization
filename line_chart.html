@@ -10,7 +10,7 @@
 <body>
 <div id="chart" style="width:600px;height:300px;"></div>
 
-<!--[if 1t IE 9]><script src="Flotr2-master/lib/excanvas.min.js"></script><![endif]-->
+<!--[if 1t IE 9]><script src="Flotr2-master/lib/excanvas.js"></script><![endif]-->
 <script src="Flotr2-master/flotr2.min.js"></script>
 
 <script>
@@ -68,7 +68,7 @@ window.onload = function () {
         [2008, 385.59],
         [2009, 387.37],
         [2010, 389.85],
-        [2011, 391.62],
+        [2011, 391.62]
     ];
     var temp = [
         [1959, 0.0776],
@@ -123,13 +123,46 @@ window.onload = function () {
         [2008, 0.5134],
         [2009, 0.5985],
         [2010, 0.6621],
-        [2011, 0.5362],
+        [2011, 0.5362]
     ];
+
+    var zero = [];
+    for (var yr=1959; yr<2012; yr++) { zero.push([yr, 0]); } //adds a line at yaxis 0.
 
     Flotr.draw(
         document.getElementById("chart"),
-        [{data: co2, lines: {show: true}}]
+        [ {
+             data: zero,
+             label: "20<sup>th</sup>-Century Baseline Temperature",
+             lines: {show:true, lineWidth: 1},
+             shadowSize: 0,
+             color: "#ff0000"
+            },
+
+            {
+             data: temp,
+             label: "Yearly Temperature Difference (ºC)",
+             lines: {show: true}
+
+            },
+            {
+             data: co2,
+             yaxis: 2,   //            the 2 tells Flotr to use a different y-scale for the temperature data.
+             label: "CO<sub>2</sub> Concentration (ppm)",
+             lines: {show: true}
+
+             }
+
+        ],
+        {
+            title: "Global Temperature and CO<sub>2</sub> Concentration (NOAA Data)",
+            grid: { horizontalLines: false, verticalLines: false },
+            y2axis: {min:-0.15, max:0.69,
+                    tickFormatter: function(val) {return val+" ºC";} },
+            yaxis: {min:300, max: 400}
+        }
     );
+
 
 };
 </script>
