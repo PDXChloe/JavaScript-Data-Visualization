@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
     <body>
-        <div class="chart" id="chart" style="width:600px;height:300px;"></div>
+        <div class="chart" id="chart" style="width:600px;height:400px;"></div>
 
         <!--[if 1t IE 9]><script src="Flotr2-master/lib/excanvas.js"></script><![endif]-->
         <script src="Flotr2-master/flotr2.min.js"></script>
@@ -139,7 +139,7 @@ Flotr.draw(
     [ {
          data: zero,
          label: "20<sup>th</sup>-Century Baseline Temperature",
-         lines: {show:true, lineWidth: 1},
+         lines: {show:true, lineWidth: 2},
          shadowSize: 0,
          color: "#ff0000"
         },
@@ -162,9 +162,10 @@ Flotr.draw(
     {
         title: "Global Temperature and CO<sub>2</sub> Concentration (NOAA Data)",
         grid: { horizontalLines: false, verticalLines: false },
+
+        y2axis: {min:300, max: 400},
         yaxis: {min:-0.15, max:0.69,
                 tickFormatter: function(val) {return val+" ºC";}},
-        y2axis: {min:300, max: 400}
     }
 
 );

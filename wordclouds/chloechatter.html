@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Chloechatter</title>
+        <meta name="description" content="">
+        <!--<link rel="stylesheet" type="text/css" href="style.css">-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div id="cloud" style="position:relative;width:1000px;height:800px;"></div>
+        <script src="wordcloud2.js"></script>
+        <script>
+            var tags = [
+                ["LOVE", 2100000],
+                ["team", 900000],
+                ["many", 200000],
+                ["JOY", 1000000],
+                ["children", 500000],
+                ["beautiful", 6000000],
+                ["ideas", 1100000],
+                ["mommy", 606666],
+                ["life", 505555],
+                ["friendship", 500500],
+                ["energy", 400000],
+                ["failure", 467983],
+                ["determination", 1000000],
+                ["DESIGN", 300000],
+                ["JavaScript",475000],
+                ["Python", 650000],
+                ["Django", 200000],
+                ["JQuery", 367890],
+                ["React", 750000],
+                ["HTML", 1000000],
+                ["CSS", 675000],
+                ["MINDFUL", 300000],
+                ["helpful", 250550],
+                ["AJAX", 250000],
+                ["JSON", 567500],
+                ["curls", 175500],
+                ["Agile", 200000],
+                ["flexible", 350000],
+                ["intelligence", 500000],
+                ["substance", 460000],
+                ["DYNAMIC", 675000],
+                ["maturity", 460000],
+                ["experience", 350000],
+                ["journey", 157890],
+                ["GLOW", 100000],
+                ["knitting", 120000],
+                ["programming", 319000],
+                ["developing", 500000],
+                ["M.B.A.", 400000],
+                ["Air Force", 500000],
+                ["Veteran", 600000],
+                ["variety", 360000],
+                ["diversity", 500000],
+                ["transition", 430000],
+                ["transformation", 300000],
+                ["sand dollar", 176000],
+                ["enhancement", 275000],
+                ["excellence", 750000],
+                ["cooking", 200000],
+                ["discovery", 200000],
+
+            ];
+
+            WordCloud(document.getElementById('cloud'), {
+          list : tags.map(function(word) { return [word[0], Math.round(word[1]/10000)]; })
+        });
+
+
+//
+        </script>
+
+
+
+    </body>
+</html>
